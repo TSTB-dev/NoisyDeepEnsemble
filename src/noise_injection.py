@@ -39,18 +39,16 @@ def make_norm_noise(weight, scale, mean, ratio):
     return new_weight
 
 def uni_noise(model, scale, ratio):
-    new_model = copy.deepcopy(model)
-    for name, param in new_model.named_parameters():
-        if "weight" in name:
-            new_model.state_dict()[name] = make_uni_noise(param, scale, ratio)
-    return new_model
+    params = [(n, p) for n, p in model.named_parameters() if all(pattern not in n for pattern in ['bias', 'bn', 'downsample'])]
+    for name, param in params:
+        model.state_dict()[name] = make_uni_noise(param, scale, ratio)
+    return model
 
 def norm_noise(model, scale, mean, ratio):
-    new_model = copy.deepcopy(model)
-    for name, param in new_model.named_parameters():
-        if "weight" in name:
-            new_model.state_dict()[name] = make_norm_noise(param, scale, mean, ratio)
-    return new_model
+    params = [(n, p) for n, p in model.named_parameters() if all(pattern not in n for pattern in ['bias', 'bn', 'downsample'])]
+    for name, param in params:
+        model.state_dict()[name] = make_norm_noise(param, scale, mean, ratio)
+    return model
 
 def inject_noise(model, perturbation, perturbation_strength, perturbation_ratio, perturbation_mean):
     if perturbation == "uniform":

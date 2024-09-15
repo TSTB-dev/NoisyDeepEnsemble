@@ -1,0 +1,24 @@
+python src/train.py \
+    --dataset cifar10 \
+    --data_dir data \
+    --batch_size 64 \
+    --num_workers 1 \
+    --epochs 200 \
+    --lr 0.1 \
+    --optimizer sgd \
+    --model resnet18 \
+    --model_path None \
+    --scheduler cosine \
+    --ensemble_size 10 \
+    --ensemble_type noisy \
+    --device cuda \
+    --log_interval 100 \
+    --save_interval 300 \
+    --save_dir path/to/savedir \
+    --perturbation normal \
+    --perturbation_type additive \
+    --reset_lr_scheduler \
+    --perturbation_strength 1.6 \
+    --perturbation_ratio 0.8 \
+    --perturbation_mean 0.0 \
+    --aux_epochs 50
