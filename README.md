@@ -34,11 +34,11 @@ bash scripts/evaluate.sh
 
 ## Citation
 If you use this project in your research, please cite it as follows:
-<!-- ```bibtex
-@article{doe2024awesome,
-  title={Awesome Project},
-  author={Doe, John},
-  journal={GitHub Repository},
+
+```bibtex
+@article{Sakai2024,
+  title={NoisyDeepEnsemble: Accelerating Deep Ensemble Learning via Noise Injection},
+  author={Shunsuke Sakai, Shunsuke Tsuge, Tatsuhito Hasegawa},
+  booktitle={ICONIP2024},
   year={2024},
-  url={https://github.com/username/repository}
-} -->
+}
